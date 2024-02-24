@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
                 height: 40,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, 'evaluaciones');
+                    Navigator.pushReplacementNamed(context, 'materias');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(240, 184, 67, 1),

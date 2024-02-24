@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class DrawerNavigation extends StatelessWidget {
   const DrawerNavigation({super.key});
@@ -59,7 +58,8 @@ class DrawerNavigation extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              itemList("Evaluaciones"),
+              itemList("Materias"),
+              itemList("Tareas"),
               itemList("Acerca de"),
             ],
           )

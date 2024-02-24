@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class CardItem extends StatelessWidget {
   final int id;
-  final String teacherName;
-  final String subjectName;
+  final String title;
+  final String subtitle;
   final bool isAnswered;
   const CardItem({
     super.key,
     required this.id,
-    required this.teacherName,
-    required this.subjectName,
+    required this.title,
+    required this.subtitle,
     required this.isAnswered,
   });
 
@@ -24,17 +24,17 @@ class CardItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(10)),
       child: ListTile(
         onTap: () {
-          Navigator.pushNamed(context, 'evaluacion', arguments: id);
+          //Navigator.pushNamed(context, 'evaluacion', arguments: id);
         },
         trailing: Icon(isAnswered ? Icons.check : Icons.open_in_new),
         title: Text(
-          teacherName,
+          title,
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
-        subtitle: Text(subjectName),
+        subtitle: Text(subtitle),
       ),
     );
   }
