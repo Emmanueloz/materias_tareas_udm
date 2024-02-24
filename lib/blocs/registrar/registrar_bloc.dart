@@ -59,19 +59,19 @@ class RegistrarBloc extends Bloc<RegistrarEvent, RegistrarState> {
 
     on<ValidarUsuarioEvent>(
       (event, emit) => emit(
-        state.copyWith(errorUsuario: ''),
+        state.copyWith(errorUsuario: ""),
       ),
     );
 
     on<ValidarCorreoEvent>(
       (event, emit) => emit(
-        state.copyWith(errorCorreo: ''),
+        state.copyWith(errorCorreo: ""),
       ),
     );
 
     on<ValidarPasswordEvent>(
       (event, emit) => emit(
-        state.copyWith(errorPassword: ''),
+        state.copyWith(errorPassword: ""),
       ),
     );
   }

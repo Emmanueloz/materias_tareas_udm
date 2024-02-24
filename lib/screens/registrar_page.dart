@@ -65,8 +65,9 @@ class RegistrarPage extends StatelessWidget {
                     backgroundColor: const Color.fromRGBO(240, 184, 67, 1),
                     onPressed: !controller.isButtonActive()
                         ? null
-                        : () =>
-                            Navigator.pushReplacementNamed(context, 'materias'),
+                        : () {
+                            controller.getStateDebug();
+                          },
                   ),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                   FullButton(

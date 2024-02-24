@@ -46,6 +46,7 @@ class RegistrarState extends Equatable {
         message,
         nombre,
         correo,
+        password
       ];
 }
 

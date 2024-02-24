@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:materias_tareas_udm/blocs/registrar/registrar_bloc.dart';
@@ -95,5 +96,17 @@ class RegistrarController {
         registrarBloc.state.nombre != "" &&
         registrarBloc.state.correo != "" &&
         registrarBloc.state.password != "";
+  }
+
+  /// Función que imprime en consola el estado actual del formulario
+  void getStateDebug() {
+    if (kDebugMode) {
+      print("error correo: ${registrarBloc.state.errorCorreo}");
+      print("error nombre: ${registrarBloc.state.errorUsuario}");
+      print("error password: ${registrarBloc.state.errorPassword}");
+      print("nombre: ${registrarBloc.state.nombre}");
+      print("correo: ${registrarBloc.state.correo}");
+      print("password: ${registrarBloc.state.password}");
+    }
   }
 }
