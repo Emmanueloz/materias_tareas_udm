@@ -9,7 +9,7 @@ class RegistrarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-      title: "Evaluación Docente",
+      title: "Registrarse",
       isLogout: false,
       automaticallyImplyLeading: false,
       body: SingleChildScrollView(

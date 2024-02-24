@@ -9,7 +9,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-      title: "Evaluación Docente",
+      title: "Iniciar Sesión",
       isLogout: false,
       automaticallyImplyLeading: false,
       body: SingleChildScrollView(
