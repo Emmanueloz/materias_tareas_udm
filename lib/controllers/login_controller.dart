@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:materias_tareas_udm/blocs/login/login_bloc.dart';
+import 'package:materias_tareas_udm/models/usuarios.dart';
+import 'package:materias_tareas_udm/provider/db_provider.dart';
 import 'package:materias_tareas_udm/utils/validador.dart';
 
 class LoginController {
@@ -70,7 +72,24 @@ class LoginController {
     }
   }
 
-  void login() {
-    loginBloc.add(const LoginMessageEvent("Iniciando sesión"));
+  void login() async {
+    Usuario? usuario = await DBProvider.db.getUsuario(
+      loginBloc.state.correo,
+    );
+
+    if (usuario == null || usuario.password != loginBloc.state.password) {
+      loginBloc.add(
+        const LoginMessageEvent("Correo o contraseña incorrectos"),
+      );
+      return;
+    }
+
+    loginBloc.add(
+      const LoginMessageEvent(""),
+    );
+
+    if (context.mounted) {
+      Navigator.pushReplacementNamed(context, 'materias');
+    }
   }
 }

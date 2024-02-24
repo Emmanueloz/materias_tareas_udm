@@ -33,13 +33,15 @@ class DBProvider {
         db.execute('CREATE TABLE Materias ('
             'id INTEGER PRIMARY KEY,'
             'nombre TEXT,'
-            'color TEXT'
+            'color TEXT,'
+            'idUsuario TEXT'
             ')');
         db.execute('CREATE TABLE Tareas ('
             'id INTEGER PRIMARY KEY,'
             'titulo TEXT,'
             'materiaId INTEGER,'
-            'completada INTEGER'
+            'completada INTEGER,'
+            'idUsuario TEXT'
             ')');
       },
     );
