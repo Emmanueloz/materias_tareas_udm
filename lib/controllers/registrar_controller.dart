@@ -86,4 +86,14 @@ class RegistrarController {
       RegistrarPasswordEvent(value ?? ''),
     );
   }
+
+  bool isButtonActive() {
+    print(registrarBloc.state.errorCorreo);
+    return registrarBloc.state.errorCorreo == "" &&
+        registrarBloc.state.errorUsuario == "" &&
+        registrarBloc.state.errorPassword == "" &&
+        registrarBloc.state.nombre != "" &&
+        registrarBloc.state.correo != "" &&
+        registrarBloc.state.password != "";
+  }
 }

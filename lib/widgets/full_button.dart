@@ -4,13 +4,13 @@ class FullButton extends StatelessWidget {
   final String label;
   final Color backgroundColor;
   final Color color;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   const FullButton({
     super.key,
     required this.label,
     required this.color,
     required this.backgroundColor,
-    required this.onPressed,
+    this.onPressed,
   });
 
   @override
