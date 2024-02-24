@@ -3,6 +3,7 @@ import 'package:materias_tareas_udm/screens/base_page.dart';
 import 'package:materias_tareas_udm/widgets/card_item.dart';
 import 'package:materias_tareas_udm/widgets/drawer_navigation.dart';
 import 'package:materias_tareas_udm/widgets/full_button.dart';
+import 'package:materias_tareas_udm/widgets/select_input.dart';
 import 'package:materias_tareas_udm/widgets/text_input.dart';
 
 class TareasPage extends StatelessWidget {
@@ -21,7 +22,10 @@ class TareasPage extends StatelessWidget {
             child: Column(
               children: [
                 const TextInput(
-                    label: 'Titulo', textInputType: TextInputType.text),
+                  label: 'Titulo',
+                ),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+                const SelectInput(),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                 FullButton(
                   label: "Agregar Tarea",
@@ -29,6 +33,7 @@ class TareasPage extends StatelessWidget {
                   backgroundColor: const Color.fromRGBO(82, 99, 239, 1),
                   color: Colors.white,
                   onPressed: () {
+                    // ignore: avoid_print
                     print('Agregar');
                   },
                 ),
