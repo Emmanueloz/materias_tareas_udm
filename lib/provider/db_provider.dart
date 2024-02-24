@@ -25,9 +25,8 @@ class DBProvider {
       onOpen: (db) {},
       onCreate: (db, version) {
         db.execute("""CREATE TABLE Usuarios (
-          id INTEGER PRIMARY KEY,
+          correo TEXT PRIMARY KEY,
           usuario TEXT,
-          correo TEXT,
           password TEXT
         )""");
         db.execute('CREATE TABLE Materias ('
