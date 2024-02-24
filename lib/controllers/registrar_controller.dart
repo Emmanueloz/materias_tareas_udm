@@ -39,4 +39,27 @@ class RegistrarController {
       RegistrarNombreEvent(value ?? ''),
     );
   }
+
+  String? validarCorreo(String? value) {
+    if (!Validate.isEmail(value ?? '')) {
+      registrarBloc.add(
+        const ErrorRegistrarCorreoEvent("Correo no válido"),
+      );
+    } else if (value!.isEmpty) {
+      registrarBloc.add(
+        const ErrorRegistrarCorreoEvent("El correo no puede estar vacío"),
+      );
+    } else {
+      registrarBloc.add(
+        const ValidarCorreoEvent(),
+      );
+    }
+    return null;
+  }
+
+  void onChangedCorreo(String? value) {
+    registrarBloc.add(
+      RegistrarCorreoEvent(value ?? ''),
+    );
+  }
 }

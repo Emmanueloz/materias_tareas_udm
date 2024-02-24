@@ -35,14 +35,18 @@ class RegistrarPage extends StatelessWidget {
                     errorText: state.errorUsuario,
                     onChanged: (value) {
                       controller.onChangedNombre(value);
-                      print(state.nombre);
                       return controller.validarNombre(value);
                     },
                   ),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-                  const TextInput(
+                  TextInput(
                     label: "Correo Electrónico",
                     textInputType: TextInputType.emailAddress,
+                    errorText: state.errorCorreo,
+                    onChanged: (value) {
+                      controller.onChangedCorreo(value);
+                      return controller.validarCorreo(value);
+                    },
                   ),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                   const TextInput(
