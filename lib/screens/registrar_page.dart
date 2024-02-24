@@ -49,9 +49,14 @@ class RegistrarPage extends StatelessWidget {
                     },
                   ),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-                  const TextInput(
+                  TextInput(
                     label: "Contraseña",
                     isObscureText: true,
+                    errorText: state.errorPassword,
+                    onChanged: (value) {
+                      controller.onChangedPassword(value);
+                      return controller.validarPassword(value);
+                    },
                   ),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                   FullButton(

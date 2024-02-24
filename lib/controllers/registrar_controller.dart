@@ -62,4 +62,28 @@ class RegistrarController {
       RegistrarCorreoEvent(value ?? ''),
     );
   }
+
+  String? validarPassword(String? value) {
+    if (!Validate.isPassword(value ?? '')) {
+      registrarBloc.add(
+        const ErrorRegistrarPasswordEvent(
+            "La contraseña debe tener al menos 4 caracteres"),
+      );
+    } else if (value!.isEmpty) {
+      registrarBloc.add(
+        const ErrorRegistrarPasswordEvent("La contraseña no puede estar vacía"),
+      );
+    } else {
+      registrarBloc.add(
+        const ValidarPasswordEvent(),
+      );
+    }
+    return null;
+  }
+
+  void onChangedPassword(String? value) {
+    registrarBloc.add(
+      RegistrarPasswordEvent(value ?? ''),
+    );
+  }
 }
