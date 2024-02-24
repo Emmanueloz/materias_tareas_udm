@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:materias_tareas_udm/models/usuarios.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -42,5 +43,31 @@ class DBProvider {
             ')');
       },
     );
+  }
+
+  Future<int> nuevoUsuario(Usuario usuario) async {
+    final db = await database;
+
+    final res = await db!.insert('Usuarios', {
+      'correo': usuario.correo.toString(),
+      'usuario': usuario.nombre.toString(),
+      'password': usuario.password.toString(),
+    });
+
+    return res;
+  }
+
+  Future<Usuario?> getUsuario(String correo) async {
+    final db = await database;
+    final res =
+        await db!.query('Usuarios', where: 'correo = ?', whereArgs: [correo]);
+
+    return res.isNotEmpty
+        ? Usuario(
+            correo: res.first['correo'].toString(),
+            nombre: res.first['nombre'].toString(),
+            password: res.first['password'].toString(),
+          )
+        : null;
   }
 }
