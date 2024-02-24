@@ -39,7 +39,14 @@ class RegistrarState extends Equatable {
   }
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [
+        errorCorreo,
+        errorUsuario,
+        errorPassword,
+        message,
+        nombre,
+        correo,
+      ];
 }
 
 //final class RegistrarInitial extends RegistrarState {}

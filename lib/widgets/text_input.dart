@@ -5,12 +5,15 @@ class TextInput extends StatelessWidget {
   final String? errorText;
   final bool? isObscureText;
   final TextInputType textInputType;
-  const TextInput(
-      {super.key,
-      required this.label,
-      this.errorText,
-      this.isObscureText,
-      this.textInputType = TextInputType.text});
+  final String? Function(String?)? onChanged;
+  const TextInput({
+    super.key,
+    required this.label,
+    this.errorText,
+    this.isObscureText,
+    this.textInputType = TextInputType.text,
+    this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +24,7 @@ class TextInput extends StatelessWidget {
         label: Text(label),
         errorText: errorText == "" ? null : errorText,
       ),
+      onChanged: onChanged,
     );
   }
 }

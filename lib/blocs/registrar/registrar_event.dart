@@ -10,43 +10,43 @@ abstract class RegistrarEvent extends Equatable {
 class RegistrarNombreEvent extends RegistrarEvent {
   final String nombre;
 
-  const RegistrarNombreEvent({required this.nombre});
+  const RegistrarNombreEvent(this.nombre);
 }
 
 class RegistrarCorreoEvent extends RegistrarEvent {
   final String correo;
 
-  const RegistrarCorreoEvent({required this.correo});
+  const RegistrarCorreoEvent(this.correo);
 }
 
 class RegistrarPasswordEvent extends RegistrarEvent {
   final String password;
 
-  const RegistrarPasswordEvent({required this.password});
+  const RegistrarPasswordEvent(this.password);
 }
 
 class ErrorRegistrarCorreoEvent extends RegistrarEvent {
   final String errorCorreo;
 
-  const ErrorRegistrarCorreoEvent({required this.errorCorreo});
+  const ErrorRegistrarCorreoEvent(this.errorCorreo);
 }
 
 class ErrorRegistrarUsuarioEvent extends RegistrarEvent {
   final String errorUsuario;
 
-  const ErrorRegistrarUsuarioEvent({required this.errorUsuario});
+  const ErrorRegistrarUsuarioEvent(this.errorUsuario);
 }
 
 class ErrorRegistrarPasswordEvent extends RegistrarEvent {
   final String errorPassword;
 
-  const ErrorRegistrarPasswordEvent({required this.errorPassword});
+  const ErrorRegistrarPasswordEvent(this.errorPassword);
 }
 
 class RegistrarMessageEvent extends RegistrarEvent {
   final String message;
 
-  const RegistrarMessageEvent({required this.message});
+  const RegistrarMessageEvent(this.message);
 }
 
 class ValidarUsuarioEvent extends RegistrarEvent {

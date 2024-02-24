@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:materias_tareas_udm/blocs/registrar/registrar_bloc.dart';
 import 'package:materias_tareas_udm/screens/login_page.dart';
 import 'package:materias_tareas_udm/screens/materias_page.dart';
 import 'package:materias_tareas_udm/screens/registrar_page.dart';
@@ -11,24 +13,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        appBarTheme: const AppBarTheme(
-          titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-          centerTitle: true,
-          backgroundColor: Color.fromRGBO(2040, 183, 67, 1),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => RegistrarBloc()),
+      ],
+      child: MaterialApp(
+        title: 'Material App',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
+          appBarTheme: const AppBarTheme(
+            titleTextStyle:
+                TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            centerTitle: true,
+            backgroundColor: Color.fromRGBO(248, 183, 67, 1),
+          ),
         ),
+        initialRoute: 'login',
+        routes: {
+          'login': (_) => const LoginPage(),
+          'registrar': (_) => const RegistrarPage(),
+          'materias': (_) => const MateriasPage(),
+          'tareas': (_) => const TareasPage(),
+        },
       ),
-      initialRoute: 'login',
-      routes: {
-        'login': (_) => const LoginPage(),
-        'registrar': (_) => const RegistrarPage(),
-        'materias': (_) => const MateriasPage(),
-        'tareas': (_) => const TareasPage(),
-      },
     );
   }
 }
