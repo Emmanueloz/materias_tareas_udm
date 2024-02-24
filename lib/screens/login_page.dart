@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:materias_tareas_udm/screens/base_page.dart';
+import 'package:materias_tareas_udm/widgets/full_button.dart';
 import 'package:materias_tareas_udm/widgets/text_input.dart';
 
 class LoginPage extends StatelessWidget {
@@ -10,6 +11,7 @@ class LoginPage extends StatelessWidget {
     return BasePage(
       title: "Evaluación Docente",
       isLogout: false,
+      automaticallyImplyLeading: false,
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -31,29 +33,13 @@ class LoginPage extends StatelessWidget {
                 isObscureText: true,
               ),
               const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-              SizedBox(
-                width: double.infinity,
-                height: 40,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, 'materias');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromRGBO(240, 184, 67, 1),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    ),
-                  ),
-                  child: const Text(
-                    "Iniciar Sesión",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
-                  ),
-                ),
+              FullButton(
+                label: "Iniciar Sesión",
+                color: Colors.black,
+                backgroundColor: const Color.fromRGBO(240, 184, 67, 1),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, 'materias');
+                },
               )
             ],
           ),

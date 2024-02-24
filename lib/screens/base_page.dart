@@ -5,6 +5,7 @@ class BasePage extends StatelessWidget {
   final bool isLogout;
   final Widget? drawer;
   final Widget? body;
+  final bool automaticallyImplyLeading;
 
   const BasePage({
     super.key,
@@ -12,6 +13,7 @@ class BasePage extends StatelessWidget {
     this.isLogout = false,
     this.body,
     this.drawer,
+    this.automaticallyImplyLeading = true,
   });
 
   @override
@@ -21,9 +23,10 @@ class BasePage extends StatelessWidget {
       actionsList.add(
         IconButton(
           onPressed: () {
-            // ignore: avoid_print
-            print("cerrar sesión");
-            Navigator.pushReplacementNamed(context, 'login');
+            //Navigator.popAndPushNamed(context, 'login');
+            //Navigator.pushReplacementNamed(context, 'login');
+            Navigator.pushNamedAndRemoveUntil(
+                context, 'login', (route) => false);
           },
           icon: const Icon(Icons.exit_to_app),
         ),
@@ -33,6 +36,7 @@ class BasePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
         actions: actionsList,
+        automaticallyImplyLeading: automaticallyImplyLeading,
       ),
       drawer: drawer,
       body: body,

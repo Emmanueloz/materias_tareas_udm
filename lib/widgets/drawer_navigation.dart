@@ -15,7 +15,7 @@ class DrawerNavigation extends StatelessWidget {
             borderRadius: BorderRadius.circular(10)),
         child: ListTile(
           onTap: () {
-            Navigator.pushNamed(context, routeName);
+            Navigator.popAndPushNamed(context, routeName);
           },
           title: Text(
             title,
