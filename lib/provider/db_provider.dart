@@ -65,7 +65,7 @@ class DBProvider {
     return res.isNotEmpty
         ? Usuario(
             correo: res.first['correo'].toString(),
-            nombre: res.first['nombre'].toString(),
+            nombre: res.first['usuario'].toString(),
             password: res.first['password'].toString(),
           )
         : null;

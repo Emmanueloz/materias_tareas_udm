@@ -66,7 +66,7 @@ class RegistrarPage extends StatelessWidget {
                     onPressed: !controller.isButtonActive()
                         ? null
                         : () {
-                            controller.getStateDebug();
+                            controller.registrar();
                           },
                   ),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
@@ -77,6 +77,11 @@ class RegistrarPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, 'login');
                     },
+                  ),
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+                  SizedBox(
+                    height: 100,
+                    child: Text(state.message),
                   ),
                 ],
               ),

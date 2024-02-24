@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:materias_tareas_udm/blocs/login/login_bloc.dart';
 import 'package:materias_tareas_udm/blocs/registrar/registrar_bloc.dart';
 import 'package:materias_tareas_udm/screens/login_page.dart';
 import 'package:materias_tareas_udm/screens/materias_page.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => RegistrarBloc()),
+        BlocProvider(create: (_) => LoginBloc()),
       ],
       child: MaterialApp(
         title: 'Material App',
