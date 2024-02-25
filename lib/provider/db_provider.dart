@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:materias_tareas_udm/models/materias.dart';
+import 'package:materias_tareas_udm/models/tareas.dart';
 import 'package:materias_tareas_udm/models/usuarios.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -111,5 +112,36 @@ class DBProvider {
     );
 
     return res;
+  }
+
+  Future<int> nuevaTarea(Tareas tarea) async {
+    final db = await database;
+
+    final res = await db!.insert('Tareas', {
+      'titulo': tarea.titulo.toString(),
+      'materia': tarea.materia.toString(),
+      'completada': tarea.completada ? 1 : 0,
+      'idUsuario': tarea.idUsuario.toString(),
+    });
+
+    return res;
+  }
+
+  Future<List<Tareas>> getTareas(String idUsuario) async {
+    final db = await database;
+    List<Tareas> list = [];
+
+    final res = await db!
+        .query("Tareas", where: "idUsuario = ?", whereArgs: [idUsuario]);
+    for (var tarea in res) {
+      list.add(Tareas(
+        id: int.parse(tarea['id'].toString()),
+        titulo: tarea['titulo'].toString(),
+        materia: tarea['materia'].toString(),
+        completada: tarea['completada'] == 1 ? true : false,
+        idUsuario: tarea['idUsuario'].toString(),
+      ));
+    }
+    return list;
   }
 }

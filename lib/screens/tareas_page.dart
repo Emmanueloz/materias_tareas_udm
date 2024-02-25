@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:materias_tareas_udm/blocs/tareas/tareas_bloc.dart';
+import 'package:materias_tareas_udm/controllers/tarea_controller.dart';
 import 'package:materias_tareas_udm/screens/base_page.dart';
 import 'package:materias_tareas_udm/widgets/card_item.dart';
 import 'package:materias_tareas_udm/widgets/drawer_navigation.dart';
@@ -13,21 +14,38 @@ class TareasPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //MateriaController materialController = MateriaController(context: context);
+    //materialController.getMaterias();
+
+    TareaController controller = TareaController(context: context);
+    controller.getTareas();
+
     return BasePage(
       title: "Tareas",
       isLogout: true,
-      drawer: const DrawerNavigation(),
+      drawer: DrawerNavigation(
+        nombre: controller.usuariosBloc.state.nombre,
+        correo: controller.usuariosBloc.state.correo,
+      ),
       body: BlocBuilder<TareasBloc, TareasState>(
         builder: (context, state) {
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Column(
               children: [
-                const TextInput(
+                TextInput(
                   label: 'Titulo',
+                  onChanged: (value) {
+                    return null;
+                  },
                 ),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-                const SelectInput(),
+                SelectInput(
+                  items: controller.materiasBloc.state.ltsMaterias,
+                  onChanged: (value) {
+                    print(value);
+                  },
+                ),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                 FullButton(
                   label: "Agregar Tarea",
