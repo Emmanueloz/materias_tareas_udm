@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:materias_tareas_udm/blocs/login/login_bloc.dart';
+import 'package:materias_tareas_udm/blocs/usuarios/usuarios_bloc.dart';
 import 'package:materias_tareas_udm/models/usuarios.dart';
 import 'package:materias_tareas_udm/provider/db_provider.dart';
 import 'package:materias_tareas_udm/utils/validador.dart';
@@ -9,9 +10,11 @@ import 'package:materias_tareas_udm/utils/validador.dart';
 class LoginController {
   final BuildContext context;
   late final LoginBloc loginBloc;
+  late final UsuariosBloc usuariosBloc;
 
   LoginController({required this.context}) {
     loginBloc = BlocProvider.of<LoginBloc>(context, listen: false);
+    usuariosBloc = BlocProvider.of<UsuariosBloc>(context, listen: false);
   }
 
   void onChangedCorreo(String? value) {
@@ -86,6 +89,14 @@ class LoginController {
 
     loginBloc.add(
       const LoginMessageEvent(""),
+    );
+
+    usuariosBloc.add(
+      UsuarioNombreEvent(usuario.nombre),
+    );
+
+    usuariosBloc.add(
+      UsuarioCorreoEvent(usuario.correo),
     );
 
     if (context.mounted) {

@@ -35,8 +35,28 @@ class DrawerNavigation extends StatelessWidget {
         padding: const EdgeInsets.all(0),
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text(nombre ?? ""),
-            accountEmail: Text(correo ?? ""),
+            accountName: Row(
+              children: [
+                const Icon(Icons.person),
+                const Padding(padding: EdgeInsets.only(left: 10)),
+                const Text(
+                  "Nombre: ",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                Text(nombre ?? "")
+              ],
+            ),
+            accountEmail: Row(
+              children: [
+                const Icon(Icons.email),
+                const Padding(padding: EdgeInsets.only(left: 10)),
+                const Text(
+                  "Correo: ",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                Text(correo ?? "")
+              ],
+            ),
           ),
           Column(
             mainAxisSize: MainAxisSize.max,
