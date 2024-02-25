@@ -36,6 +36,7 @@ class TareasPage extends StatelessWidget {
                 TextInput(
                   label: 'Titulo',
                   onChanged: (value) {
+                    controller.onChangeNombreTarea(value ?? "");
                     return null;
                   },
                 ),
@@ -43,7 +44,7 @@ class TareasPage extends StatelessWidget {
                 SelectInput(
                   items: controller.materiasBloc.state.ltsMaterias,
                   onChanged: (value) {
-                    print(value);
+                    controller.onChangeMateriaTarea(value);
                   },
                 ),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
@@ -52,10 +53,11 @@ class TareasPage extends StatelessWidget {
                   //rgb(82, 99, 239)
                   backgroundColor: const Color.fromRGBO(82, 99, 239, 1),
                   color: Colors.white,
-                  onPressed: () {
-                    // ignore: avoid_print
-                    print('Agregar');
-                  },
+                  onPressed: !controller.isButtonActive()
+                      ? null
+                      : () {
+                          controller.addMaterial();
+                        },
                 ),
                 Expanded(
                     child: ListView.builder(

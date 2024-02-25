@@ -41,7 +41,7 @@ class DBProvider {
         db.execute('CREATE TABLE Tareas ('
             'id INTEGER PRIMARY KEY,'
             'titulo TEXT,'
-            'materia String,'
+            'materia Text,'
             'completada INTEGER,'
             'idUsuario TEXT'
             ')');

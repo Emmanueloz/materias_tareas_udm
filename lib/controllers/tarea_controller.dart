@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:materias_tareas_udm/blocs/materias/materias_bloc.dart';
@@ -25,5 +26,40 @@ class TareaController {
     for (Tareas tarea in tareas) {
       tareasBloc.add(TareasAddEvent(tarea));
     }
+  }
+
+  void onChangeNombreTarea(String titulo) {
+    tareasBloc.add(TareasNombreEvent(titulo));
+  }
+
+  void onChangeMateriaTarea(String materia) {
+    tareasBloc.add(TareasMateriaEvent(materia));
+  }
+
+  bool isButtonActive() {
+    return tareasBloc.state.nombre.isNotEmpty &&
+        tareasBloc.state.materia.isNotEmpty &&
+        materiasBloc.state.ltsMaterias.isNotEmpty;
+  }
+
+  void getStatus() {
+    if (kDebugMode) {
+      print(tareasBloc.state.nombre);
+      print(tareasBloc.state.materia);
+      print(tareasBloc.state.ltsTareas);
+      print(materiasBloc.state.ltsMaterias);
+    }
+  }
+
+  addMaterial() async {
+    Tareas tarea = Tareas(
+      titulo: tareasBloc.state.nombre,
+      materia: tareasBloc.state.materia,
+      completada: false,
+      idUsuario: usuariosBloc.state.correo,
+    );
+
+    await DBProvider.db.nuevaTarea(tarea);
+    getTareas();
   }
 }
