@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class CardItem extends StatelessWidget {
   final int id;
   final String title;
-  final String subtitle;
+  final String? subtitle;
   final bool isAnswered;
   const CardItem({
     super.key,
     required this.id,
     required this.title,
-    required this.subtitle,
-    required this.isAnswered,
+    this.subtitle,
+    this.isAnswered = false,
   });
 
   @override
@@ -34,7 +34,7 @@ class CardItem extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        subtitle: Text(subtitle),
+        subtitle: Text(subtitle ?? ""),
       ),
     );
   }

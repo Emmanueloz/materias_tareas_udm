@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:materias_tareas_udm/blocs/materias/materias_bloc.dart';
+import 'package:materias_tareas_udm/controllers/materia_controller.dart';
 import 'package:materias_tareas_udm/screens/base_page.dart';
 import 'package:materias_tareas_udm/widgets/card_item.dart';
 import 'package:materias_tareas_udm/widgets/drawer_navigation.dart';
@@ -10,50 +13,49 @@ class MateriasPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MateriaController controller = MateriaController(context: context);
     return BasePage(
       title: "Materias",
       isLogout: true,
       drawer: const DrawerNavigation(),
-      body: ListView(
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
+      body: BlocBuilder<MateriasBloc, MateriasState>(
+        builder: (context, state) {
+          return Container(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               children: [
-                const TextInput(
-                    label: 'Nombre', textInputType: TextInputType.text),
+                TextInput(
+                  label: 'Nombre',
+                  textInputType: TextInputType.text,
+                  onChanged: (value) {
+                    controller.addNombreMateria(value ?? "");
+                    return null;
+                  },
+                ),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                 FullButton(
                   label: "Agregar Materia",
                   //rgb(82, 99, 239)
                   backgroundColor: const Color.fromRGBO(82, 99, 239, 1),
                   color: Colors.white,
-                  onPressed: () {
-                    print('Agregar');
-                  },
+                  onPressed: state.nombre.trim().isNotEmpty
+                      ? () => controller.addMateria()
+                      : null,
                 ),
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: state.ltsMaterias.length,
+                    itemBuilder: (context, index) => CardItem(
+                      id: index,
+                      title: state.ltsMaterias[index].nombre,
+                    ),
+                  ),
+                )
               ],
             ),
-          ),
-          const CardItem(
-            id: 1,
-            title: "Evaluacion 1",
-            subtitle: "Maestro",
-            isAnswered: false,
-          ),
-          const CardItem(
-            id: 1,
-            title: "Evaluacion 1",
-            subtitle: "Maestro",
-            isAnswered: false,
-          ),
-          const CardItem(
-            id: 1,
-            title: "Evaluacion 1",
-            subtitle: "Maestro",
-            isAnswered: false,
-          ),
-        ],
+          );
+        },
       ),
     );
   }
