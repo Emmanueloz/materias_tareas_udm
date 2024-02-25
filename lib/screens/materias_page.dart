@@ -14,6 +14,7 @@ class MateriasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MateriaController controller = MateriaController(context: context);
+    controller.getMaterias();
     return BasePage(
       title: "Materias",
       isLogout: true,
