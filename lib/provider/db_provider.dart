@@ -123,7 +123,7 @@ class DBProvider {
       where: 'id = ?',
       whereArgs: [materia.id],
     );
-
+    print(res);
     return res;
   }
 

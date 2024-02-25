@@ -11,7 +11,7 @@ class SelectInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (items != null) {
+    if (items != null && items!.isNotEmpty) {
       for (var tarea in items!) {
         _items.add(
           DropdownMenuItem(

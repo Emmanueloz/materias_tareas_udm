@@ -35,6 +35,7 @@ class EditarMateriaPage extends StatelessWidget {
                   TextInput(
                     label: 'Nombre',
                     textInputType: TextInputType.text,
+                    controller: controller.nombreController,
                     onChanged: (value) {
                       controller.addNombreMateria(value ?? "");
                       return null;
@@ -42,13 +43,14 @@ class EditarMateriaPage extends StatelessWidget {
                   ),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                   FullButton(
-                    label: "Agregar Materia",
+                    label: "Editar Materia",
                     //rgb(82, 99, 239)
                     backgroundColor: Theme.of(context).colorScheme.secondary,
                     color: Colors.white,
-                    onPressed: state.nombre.trim().isNotEmpty
-                        ? () => controller.addMateria()
-                        : null,
+                    onPressed:
+                        state.nombre.trim().isNotEmpty && materia is Materias
+                            ? () => controller.editarMateria(materia.id)
+                            : null,
                   ),
                 ],
               ),

@@ -10,6 +10,8 @@ class MateriaController {
   late final MateriasBloc materiasBloc;
   late final UsuariosBloc usuariosBloc;
 
+  TextEditingController nombreController = TextEditingController();
+
   MateriaController({required this.context}) {
     materiasBloc = BlocProvider.of<MateriasBloc>(
       context,
@@ -30,8 +32,9 @@ class MateriaController {
     }
   }
 
-  void addNombreMateria(String nombre) {
-    materiasBloc.add(MateriasNombreEvent(nombre));
+  void addNombreMateria(String? nombre) {
+    materiasBloc.add(MateriasNombreEvent(nombre ?? ""));
+    nombreController.text = nombre ?? "";
   }
 
   addMateria() async {
@@ -56,5 +59,17 @@ class MateriaController {
 
   void cleanStatus() {
     materiasBloc.add(const MateriasClearEvent());
+  }
+
+  editarMateria(int id) {
+    //materiasBloc.add(MateriasEditarEvent(materia));
+    Materias materia = Materias(
+      id: id,
+      nombre: materiasBloc.state.nombre,
+      idUsuario: usuariosBloc.state.correo,
+    );
+    DBProvider.db.updateMateria(materia);
+    getMaterias();
+    Navigator.pop(context);
   }
 }
