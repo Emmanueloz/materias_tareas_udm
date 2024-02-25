@@ -55,7 +55,6 @@ class TareaController {
     Tareas tarea = Tareas(
       titulo: tareasBloc.state.nombre,
       materia: tareasBloc.state.materia,
-      completada: false,
       idUsuario: usuariosBloc.state.correo,
     );
 

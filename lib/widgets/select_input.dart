@@ -23,9 +23,11 @@ class SelectInput extends StatelessWidget {
     print(items);
     print(_items);
 
+    String value = _items.isNotEmpty ? items![0].nombre.toString() : "";
+
     return DropdownButtonFormField(
       decoration: const InputDecoration(label: Text('Materia')),
-      value: items![0].nombre.toString(),
+      value: value,
       items: [..._items],
       onChanged: onChanged,
     );

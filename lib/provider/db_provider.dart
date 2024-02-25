@@ -42,7 +42,6 @@ class DBProvider {
             'id INTEGER PRIMARY KEY,'
             'titulo TEXT,'
             'materia Text,'
-            'completada INTEGER,'
             'idUsuario TEXT'
             ')');
       },
@@ -120,7 +119,6 @@ class DBProvider {
     final res = await db!.insert('Tareas', {
       'titulo': tarea.titulo.toString(),
       'materia': tarea.materia.toString(),
-      'completada': tarea.completada ? 1 : 0,
       'idUsuario': tarea.idUsuario.toString(),
     });
 
@@ -138,7 +136,6 @@ class DBProvider {
         id: int.parse(tarea['id'].toString()),
         titulo: tarea['titulo'].toString(),
         materia: tarea['materia'].toString(),
-        completada: tarea['completada'] == 1 ? true : false,
         idUsuario: tarea['idUsuario'].toString(),
       ));
     }

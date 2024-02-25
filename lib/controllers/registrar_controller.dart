@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:materias_tareas_udm/blocs/registrar/registrar_bloc.dart';
+import 'package:materias_tareas_udm/blocs/usuarios/usuarios_bloc.dart';
 import 'package:materias_tareas_udm/models/usuarios.dart';
 import 'package:materias_tareas_udm/provider/db_provider.dart';
 import 'package:materias_tareas_udm/utils/validador.dart';
@@ -9,9 +10,11 @@ import 'package:materias_tareas_udm/utils/validador.dart';
 class RegistrarController {
   final BuildContext context;
   late final RegistrarBloc registrarBloc;
+  late final UsuariosBloc usuariosBloc;
 
   RegistrarController({required this.context}) {
     registrarBloc = BlocProvider.of<RegistrarBloc>(context, listen: false);
+    usuariosBloc = BlocProvider.of<UsuariosBloc>(context, listen: false);
   }
 
   String? validarNombre(String? value) {
@@ -129,6 +132,15 @@ class RegistrarController {
     }
 
     await DBProvider.db.nuevoUsuario(usuario);
+
+    usuariosBloc.add(
+      UsuarioNombreEvent(usuario.nombre),
+    );
+
+    usuariosBloc.add(
+      UsuarioCorreoEvent(usuario.correo),
+    );
+
     if (context.mounted) {
       Navigator.pushReplacementNamed(context, 'materias');
     }
