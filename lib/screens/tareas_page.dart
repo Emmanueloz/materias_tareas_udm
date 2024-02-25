@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:materias_tareas_udm/blocs/tareas/tareas_bloc.dart';
 import 'package:materias_tareas_udm/screens/base_page.dart';
 import 'package:materias_tareas_udm/widgets/card_item.dart';
 import 'package:materias_tareas_udm/widgets/drawer_navigation.dart';
@@ -15,9 +17,9 @@ class TareasPage extends StatelessWidget {
       title: "Tareas",
       isLogout: true,
       drawer: const DrawerNavigation(),
-      body: ListView(
-        children: [
-          Container(
+      body: BlocBuilder<TareasBloc, TareasState>(
+        builder: (context, state) {
+          return Container(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Column(
               children: [
@@ -37,29 +39,20 @@ class TareasPage extends StatelessWidget {
                     print('Agregar');
                   },
                 ),
+                Expanded(
+                    child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: state.ltsTareas.length,
+                  itemBuilder: (context, index) => CardItem(
+                    id: index,
+                    title: state.ltsTareas[index].titulo,
+                    subtitle: state.ltsTareas[index].materia,
+                  ),
+                ))
               ],
             ),
-          ),
-          const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-          const CardItem(
-            id: 1,
-            title: "Evaluacion 1",
-            subtitle: "Maestro",
-            isAnswered: false,
-          ),
-          const CardItem(
-            id: 1,
-            title: "Evaluacion 1",
-            subtitle: "Maestro",
-            isAnswered: false,
-          ),
-          const CardItem(
-            id: 1,
-            title: "Evaluacion 1",
-            subtitle: "Maestro",
-            isAnswered: false,
-          ),
-        ],
+          );
+        },
       ),
     );
   }

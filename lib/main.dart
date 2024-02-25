@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:materias_tareas_udm/blocs/login/login_bloc.dart';
 import 'package:materias_tareas_udm/blocs/materias/materias_bloc.dart';
 import 'package:materias_tareas_udm/blocs/registrar/registrar_bloc.dart';
+import 'package:materias_tareas_udm/blocs/tareas/tareas_bloc.dart';
 import 'package:materias_tareas_udm/blocs/usuarios/usuarios_bloc.dart';
 import 'package:materias_tareas_udm/screens/login_page.dart';
 import 'package:materias_tareas_udm/screens/materias_page.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => LoginBloc()),
         BlocProvider(create: (_) => MateriasBloc()),
         BlocProvider(create: (_) => UsuariosBloc()),
+        BlocProvider(create: (_) => TareasBloc()),
       ],
       child: MaterialApp(
         title: 'Material App',

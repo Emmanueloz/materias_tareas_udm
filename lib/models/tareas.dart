@@ -1,10 +1,10 @@
 class Tareas {
   final int id;
   final String titulo;
-  final int materiaId;
+  final String materia;
   Tareas({
     this.id = 0,
     required this.titulo,
-    required this.materiaId,
+    required this.materia,
   });
 }
