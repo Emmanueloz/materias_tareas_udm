@@ -53,6 +53,9 @@ class MateriasPage extends StatelessWidget {
                     itemBuilder: (context, index) => CardItem(
                       id: index,
                       title: state.ltsMaterias[index].nombre,
+                      onDeleted: () => controller.deleteMaterial(
+                        state.ltsMaterias[index],
+                      ),
                     ),
                   ),
                 )

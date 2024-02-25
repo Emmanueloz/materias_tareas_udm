@@ -4,37 +4,67 @@ class CardItem extends StatelessWidget {
   final int id;
   final String title;
   final String? subtitle;
-  final bool isAnswered;
+  final VoidCallback? onDeleted;
+  final VoidCallback? onEdited;
   const CardItem({
     super.key,
     required this.id,
     required this.title,
     this.subtitle,
-    this.isAnswered = false,
+    this.onDeleted,
+    this.onEdited,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-      decoration: BoxDecoration(
-          border: Border.all(
-            style: BorderStyle.solid,
-          ),
-          borderRadius: BorderRadius.circular(10)),
-      child: ListTile(
-        onTap: () {
-          //Navigator.pushNamed(context, 'evaluacion', arguments: id);
-        },
-        trailing: Icon(isAnswered ? Icons.check : Icons.open_in_new),
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+    return Dismissible(
+      key: UniqueKey(),
+      background: Container(
+        color: Colors.red,
+        alignment: Alignment.centerLeft,
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.symmetric(vertical: 5),
+        child: const Icon(
+          Icons.delete,
+          color: Colors.white,
         ),
-        subtitle: Text(subtitle ?? ""),
+      ),
+      secondaryBackground: Container(
+        color: Colors.green,
+        alignment: Alignment.centerRight,
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.symmetric(vertical: 5),
+        child: const Icon(
+          Icons.edit,
+          color: Colors.white,
+        ),
+      ),
+      onDismissed: (direction) {
+        if (direction == DismissDirection.startToEnd) {
+          if (onDeleted != null) {
+            onDeleted!();
+          }
+        } else {
+          if (onEdited != null) {
+            onEdited!();
+          }
+        }
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(color: Colors.black, width: 1),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: ListTile(
+          title: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          subtitle: Text(subtitle ?? ""),
+        ),
       ),
     );
   }

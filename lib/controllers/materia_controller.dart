@@ -43,4 +43,10 @@ class MateriaController {
     await DBProvider.db.nuevaMateria(materia);
     getMaterias();
   }
+
+  deleteMaterial(Materias materia) async {
+    await DBProvider.db.deleteMateria(materia);
+    materiasBloc.add(MateriasDeleteEvent(materia));
+    getMaterias();
+  }
 }
