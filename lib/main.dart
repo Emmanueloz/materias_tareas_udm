@@ -5,6 +5,7 @@ import 'package:materias_tareas_udm/blocs/materias/materias_bloc.dart';
 import 'package:materias_tareas_udm/blocs/registrar/registrar_bloc.dart';
 import 'package:materias_tareas_udm/blocs/tareas/tareas_bloc.dart';
 import 'package:materias_tareas_udm/blocs/usuarios/usuarios_bloc.dart';
+import 'package:materias_tareas_udm/screens/acerca_page.dart';
 import 'package:materias_tareas_udm/screens/login_page.dart';
 import 'package:materias_tareas_udm/screens/materias_page.dart';
 import 'package:materias_tareas_udm/screens/registrar_page.dart';
@@ -32,12 +33,12 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: const ColorScheme.light(
             primary: Color.fromRGBO(248, 183, 67, 1),
+            secondary: Color.fromRGBO(82, 99, 239, 1),
           ),
           appBarTheme: const AppBarTheme(
             titleTextStyle:
                 TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             centerTitle: true,
-            backgroundColor: Color.fromRGBO(248, 183, 67, 1),
           ),
         ),
         initialRoute: 'login',
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
           'registrar': (_) => const RegistrarPage(),
           'materias': (_) => const MateriasPage(),
           'tareas': (_) => const TareasPage(),
+          'acerca': (_) => const AcercaPage(),
         },
       ),
     );

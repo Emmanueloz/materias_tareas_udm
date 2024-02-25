@@ -44,7 +44,7 @@ class MateriasPage extends StatelessWidget {
                 FullButton(
                   label: "Agregar Materia",
                   //rgb(82, 99, 239)
-                  backgroundColor: const Color.fromRGBO(82, 99, 239, 1),
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
                   color: Colors.white,
                   onPressed: state.nombre.trim().isNotEmpty
                       ? () => controller.addMateria()

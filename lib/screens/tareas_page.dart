@@ -55,7 +55,7 @@ class TareasPage extends StatelessWidget {
                 FullButton(
                   label: "Agregar Tarea",
                   //rgb(82, 99, 239)
-                  backgroundColor: const Color.fromRGBO(82, 99, 239, 1),
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
                   color: Colors.white,
                   onPressed: !controller.isButtonActive()
                       ? null

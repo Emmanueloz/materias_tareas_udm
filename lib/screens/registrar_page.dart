@@ -62,7 +62,7 @@ class RegistrarPage extends StatelessWidget {
                   FullButton(
                     label: "Registrarse",
                     color: Colors.black,
-                    backgroundColor: const Color.fromRGBO(240, 184, 67, 1),
+                    backgroundColor: Theme.of(context).colorScheme.primary,
                     onPressed: !controller.isButtonActive()
                         ? null
                         : () {

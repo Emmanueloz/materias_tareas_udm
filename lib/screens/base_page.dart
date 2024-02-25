@@ -40,6 +40,7 @@ class BasePage extends StatelessWidget {
         title: Text(title),
         actions: actionsList,
         automaticallyImplyLeading: automaticallyImplyLeading,
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       drawer: drawer,
       body: body,

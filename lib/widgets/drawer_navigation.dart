@@ -69,6 +69,7 @@ class DrawerNavigation extends StatelessWidget {
             children: [
               itemList("Materias", 'materias'),
               itemList("Tareas", 'tareas'),
+              itemList("Acerca de", 'acerca'),
             ],
           )
         ],
