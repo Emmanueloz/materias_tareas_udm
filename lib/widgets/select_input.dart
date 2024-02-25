@@ -26,7 +26,6 @@ class SelectInput extends StatelessWidget {
 
     return DropdownButtonFormField(
       decoration: const InputDecoration(label: Text('Materia')),
-      value: value,
       items: _items.toList(),
       onChanged: onChanged,
     );
