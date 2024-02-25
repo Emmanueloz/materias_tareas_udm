@@ -7,6 +7,7 @@ import 'package:materias_tareas_udm/blocs/tareas/tareas_bloc.dart';
 import 'package:materias_tareas_udm/blocs/usuarios/usuarios_bloc.dart';
 import 'package:materias_tareas_udm/screens/acerca_page.dart';
 import 'package:materias_tareas_udm/screens/editar_materia_page.dart';
+import 'package:materias_tareas_udm/screens/editar_tarea_page.dart';
 import 'package:materias_tareas_udm/screens/login_page.dart';
 import 'package:materias_tareas_udm/screens/materias_page.dart';
 import 'package:materias_tareas_udm/screens/registrar_page.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
           'materias': (_) => const MateriasPage(),
           'editarMateria': (_) => const EditarMateriaPage(),
           'tareas': (_) => const TareasPage(),
+          'editarTarea': (_) => const EditarTareaPage(),
           'acerca': (_) => const AcercaPage(),
         },
       ),

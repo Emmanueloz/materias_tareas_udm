@@ -13,6 +13,8 @@ class TareaController {
   late final MateriasBloc materiasBloc;
   late final UsuariosBloc usuariosBloc;
 
+  TextEditingController nombreController = TextEditingController();
+
   TareaController({required this.context}) {
     tareasBloc = BlocProvider.of<TareasBloc>(context, listen: false);
     usuariosBloc = BlocProvider.of<UsuariosBloc>(context, listen: false);
@@ -30,6 +32,7 @@ class TareaController {
 
   void onChangeNombreTarea(String titulo) {
     tareasBloc.add(TareasNombreEvent(titulo));
+    nombreController.text = titulo;
   }
 
   void onChangeMateriaTarea(String materia) {
