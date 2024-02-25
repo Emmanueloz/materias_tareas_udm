@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:materias_tareas_udm/models/materias.dart';
 import 'package:materias_tareas_udm/models/usuarios.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -71,5 +72,44 @@ class DBProvider {
             password: res.first['password'].toString(),
           )
         : null;
+  }
+
+  Future<int> nuevaMateria(Materias materia) async {
+    final db = await database;
+
+    final res = await db!.insert('Materias', {
+      'nombre': materia.nombre.toString(),
+      'idUsuario': materia.idUsuario.toString(),
+    });
+
+    return res;
+  }
+
+  Future<List<Materias>> getMaterias(String idUsuario) async {
+    final db = await database;
+    List<Materias> list = [];
+
+    final res = await db!
+        .query("Materias", where: "idUsuario = ?", whereArgs: [idUsuario]);
+    for (var materia in res) {
+      list.add(Materias(
+        id: int.parse(materia['id'].toString()),
+        nombre: materia['nombre'].toString(),
+        idUsuario: materia['idUsuario'].toString(),
+      ));
+    }
+    return list;
+  }
+
+  Future<int?> deleteMateria(Materias materia) async {
+    final db = await database;
+
+    final res = await db!.delete(
+      'Materias',
+      where: 'id = ?',
+      whereArgs: [materia.id],
+    );
+
+    return res;
   }
 }
