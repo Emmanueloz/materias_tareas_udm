@@ -49,4 +49,9 @@ class MateriaController {
     materiasBloc.add(MateriasDeleteEvent(materia));
     getMaterias();
   }
+
+  void cleanLogout() {
+    usuariosBloc.add(const UsuarioLimpiarEvent());
+    materiasBloc.add(const MateriasClearEvent());
+  }
 }

@@ -75,6 +75,12 @@ class LoginController {
     }
   }
 
+  void cleanStatus() {
+    loginBloc.add(
+      const LoginResetEvent(),
+    );
+  }
+
   void login() async {
     Usuario? usuario = await DBProvider.db.getUsuario(
       loginBloc.state.correo,

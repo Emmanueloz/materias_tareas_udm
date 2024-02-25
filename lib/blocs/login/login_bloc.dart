@@ -56,5 +56,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         state.copyWith(message: event.message),
       ),
     );
+
+    on<LoginResetEvent>(
+      (event, emit) => emit(
+        state.reset(),
+      ),
+    );
   }
 }

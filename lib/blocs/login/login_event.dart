@@ -39,3 +39,7 @@ class LoginMessageEvent extends LoginEvent {
   final String message;
   const LoginMessageEvent(this.message);
 }
+
+class LoginResetEvent extends LoginEvent {
+  const LoginResetEvent();
+}

@@ -18,6 +18,9 @@ class MateriasPage extends StatelessWidget {
     return BasePage(
       title: "Materias",
       isLogout: true,
+      cleanLogout: () {
+        controller.cleanLogout();
+      },
       drawer: DrawerNavigation(
         nombre: controller.usuariosBloc.state.nombre,
         correo: controller.usuariosBloc.state.correo,

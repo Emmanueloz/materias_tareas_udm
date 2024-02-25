@@ -12,6 +12,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginController controller = LoginController(context: context);
+    controller.cleanStatus();
     return BasePage(
       title: "Iniciar Sesión",
       isLogout: false,

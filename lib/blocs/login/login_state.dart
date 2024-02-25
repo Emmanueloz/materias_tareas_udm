@@ -30,6 +30,16 @@ class LoginState extends Equatable {
     );
   }
 
+  LoginState reset() {
+    return const LoginState(
+      correo: '',
+      password: '',
+      errorCorreo: '',
+      errorPassword: '',
+      message: '',
+    );
+  }
+
   @override
   List<Object> get props => [
         correo,

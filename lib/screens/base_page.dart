@@ -6,6 +6,7 @@ class BasePage extends StatelessWidget {
   final Widget? drawer;
   final Widget? body;
   final bool automaticallyImplyLeading;
+  final Function? cleanLogout;
 
   const BasePage({
     super.key,
@@ -14,6 +15,7 @@ class BasePage extends StatelessWidget {
     this.body,
     this.drawer,
     this.automaticallyImplyLeading = true,
+    this.cleanLogout,
   });
 
   @override
@@ -23,8 +25,9 @@ class BasePage extends StatelessWidget {
       actionsList.add(
         IconButton(
           onPressed: () {
-            //Navigator.popAndPushNamed(context, 'login');
-            //Navigator.pushReplacementNamed(context, 'login');
+            if (cleanLogout != null) {
+              cleanLogout!();
+            }
             Navigator.pushNamedAndRemoveUntil(
                 context, 'login', (route) => false);
           },
