@@ -3,8 +3,9 @@ import 'package:materias_tareas_udm/models/materias.dart';
 
 class SelectInput extends StatelessWidget {
   final List<Materias>? items;
+  final String? value;
   final Function(dynamic)? onChanged;
-  SelectInput({super.key, required this.items, this.onChanged});
+  SelectInput({super.key, required this.items, this.onChanged, this.value});
 
   final List<DropdownMenuItem> _items = [];
 
@@ -20,15 +21,13 @@ class SelectInput extends StatelessWidget {
         );
       }
     }
-    print(items);
-    print(_items);
-
-    String value = _items.isNotEmpty ? items![0].nombre.toString() : "";
+    //print(items);
+    //print(_items);
 
     return DropdownButtonFormField(
       decoration: const InputDecoration(label: Text('Materia')),
       value: value,
-      items: [..._items],
+      items: _items.toList(),
       onChanged: onChanged,
     );
   }

@@ -141,4 +141,16 @@ class DBProvider {
     }
     return list;
   }
+
+  Future<int?> deleteTarea(Tareas tarea) async {
+    final db = await database;
+
+    final res = await db!.delete(
+      'Tareas',
+      where: 'id = ?',
+      whereArgs: [tarea.id],
+    );
+
+    return res;
+  }
 }

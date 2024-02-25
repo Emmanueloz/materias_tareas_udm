@@ -61,4 +61,16 @@ class TareaController {
     await DBProvider.db.nuevaTarea(tarea);
     getTareas();
   }
+
+  deleteMaterial(Tareas tarea) async {
+    await DBProvider.db.deleteTarea(tarea);
+    tareasBloc.add(TareasDeleteEvent(tarea));
+    getTareas();
+  }
+
+  void cleanLogout() {
+    usuariosBloc.add(const UsuarioLimpiarEvent());
+    materiasBloc.add(const MateriasClearEvent());
+    tareasBloc.add(const TareasClearEvent());
+  }
 }

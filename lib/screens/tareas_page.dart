@@ -14,15 +14,15 @@ class TareasPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //MateriaController materialController = MateriaController(context: context);
-    //materialController.getMaterias();
-
     TareaController controller = TareaController(context: context);
     controller.getTareas();
 
     return BasePage(
       title: "Tareas",
       isLogout: true,
+      cleanLogout: () {
+        controller.cleanLogout();
+      },
       drawer: DrawerNavigation(
         nombre: controller.usuariosBloc.state.nombre,
         correo: controller.usuariosBloc.state.correo,
@@ -43,6 +43,9 @@ class TareasPage extends StatelessWidget {
                 const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                 SelectInput(
                   items: controller.materiasBloc.state.ltsMaterias,
+                  value: controller.materiasBloc.state.ltsMaterias.isNotEmpty
+                      ? controller.materiasBloc.state.ltsMaterias[0].nombre
+                      : null,
                   onChanged: (value) {
                     controller.onChangeMateriaTarea(value);
                   },
@@ -67,6 +70,9 @@ class TareasPage extends StatelessWidget {
                     id: index,
                     title: state.ltsTareas[index].titulo,
                     subtitle: state.ltsTareas[index].materia,
+                    onDeleted: () => controller.deleteMaterial(
+                      state.ltsTareas[index],
+                    ),
                   ),
                 ))
               ],
