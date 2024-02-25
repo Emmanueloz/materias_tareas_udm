@@ -4,6 +4,7 @@ class TextInput extends StatelessWidget {
   final String label;
   final String? errorText;
   final bool? isObscureText;
+  final String? value;
   final TextInputType textInputType;
   final String? Function(String?)? onChanged;
   const TextInput({
@@ -13,6 +14,7 @@ class TextInput extends StatelessWidget {
     this.isObscureText,
     this.textInputType = TextInputType.text,
     this.onChanged,
+    this.value,
   });
 
   @override

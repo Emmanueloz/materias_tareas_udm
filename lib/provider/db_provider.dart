@@ -35,7 +35,6 @@ class DBProvider {
         db.execute('CREATE TABLE Materias ('
             'id INTEGER PRIMARY KEY,'
             'nombre TEXT,'
-            'color TEXT,'
             'idUsuario TEXT'
             ')');
         db.execute('CREATE TABLE Tareas ('
@@ -106,6 +105,21 @@ class DBProvider {
 
     final res = await db!.delete(
       'Materias',
+      where: 'id = ?',
+      whereArgs: [materia.id],
+    );
+
+    return res;
+  }
+
+  Future<int?> updateMateria(Materias materia) async {
+    final db = await database;
+
+    final res = await db!.update(
+      'Materias',
+      {
+        'nombre': materia.nombre.toString(),
+      },
       where: 'id = ?',
       whereArgs: [materia.id],
     );

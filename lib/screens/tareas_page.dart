@@ -31,7 +31,7 @@ class TareasPage extends StatelessWidget {
       body: BlocBuilder<TareasBloc, TareasState>(
         builder: (context, state) {
           return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               children: [
                 TextInput(

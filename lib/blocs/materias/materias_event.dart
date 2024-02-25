@@ -17,11 +17,6 @@ class MateriasAddEvent extends MateriasEvent {
   const MateriasAddEvent(this.materia);
 }
 
-class MateriasDeleteEvent extends MateriasEvent {
-  final Materias materia;
-  const MateriasDeleteEvent(this.materia);
-}
-
 class MateriasClearEvent extends MateriasEvent {
   const MateriasClearEvent();
 }

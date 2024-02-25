@@ -60,6 +60,11 @@ class MateriasPage extends StatelessWidget {
                       onDeleted: () => controller.deleteMaterial(
                         state.ltsMaterias[index],
                       ),
+                      onEdited: () => Navigator.pushNamed(
+                        context,
+                        'editarMateria',
+                        arguments: state.ltsMaterias[index],
+                      ),
                     ),
                   ),
                 )

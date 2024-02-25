@@ -12,14 +12,6 @@ class MateriasState extends Equatable {
     );
   }
 
-  MateriasState removeMateria(Materias materia) {
-    ltsMaterias.remove(materia);
-    return MateriasState(
-      nombre: nombre,
-      ltsMaterias: ltsMaterias,
-    );
-  }
-
   MateriasState clearMateria() {
     return const MateriasState(
       nombre: "",

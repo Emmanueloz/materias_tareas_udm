@@ -25,12 +25,6 @@ class MateriasBloc extends Bloc<MateriasEvent, MateriasState> {
       ),
     );
 
-    on<MateriasDeleteEvent>(
-      (event, emit) => emit(
-        state.removeMateria(event.materia),
-      ),
-    );
-
     on<MateriasClearEvent>(
       (event, emit) => emit(
         state.clearMateria(),
