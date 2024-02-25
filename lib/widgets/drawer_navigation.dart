@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DrawerNavigation extends StatelessWidget {
-  const DrawerNavigation({super.key});
+  final String? nombre;
+  final String? correo;
+  const DrawerNavigation({super.key, this.nombre, this.correo});
 
   @override
   Widget build(BuildContext context) {
@@ -32,26 +34,9 @@ class DrawerNavigation extends StatelessWidget {
       child: ListView(
         padding: const EdgeInsets.all(0),
         children: [
-          DrawerHeader(
-            decoration: const BoxDecoration(
-              color: Color.fromRGBO(240, 184, 67, 1),
-            ),
-            child: Row(
-              children: [
-                Image.asset(
-                  "assets/img/escudo-udm.png",
-                  width: 40,
-                  height: 40,
-                ),
-                const Text(
-                  'Evaluación Docente',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
+          UserAccountsDrawerHeader(
+            accountName: Text(nombre ?? ""),
+            accountEmail: Text(correo ?? ""),
           ),
           Column(
             mainAxisSize: MainAxisSize.max,
