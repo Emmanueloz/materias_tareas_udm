@@ -26,7 +26,7 @@ class RegistrarPage extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    "assets/img/escudo-udm.png",
+                    "assets/img/logo.png",
                     width: 150,
                     height: 150,
                   ),

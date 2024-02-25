@@ -35,6 +35,11 @@ class DrawerNavigation extends StatelessWidget {
         padding: const EdgeInsets.all(0),
         children: [
           UserAccountsDrawerHeader(
+            currentAccountPicture: Image.asset(
+              "assets/img/logo.png",
+              width: 150,
+              height: 150,
+            ),
             accountName: Row(
               children: [
                 const Icon(Icons.person),
