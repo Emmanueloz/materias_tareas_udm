@@ -54,4 +54,8 @@ class MateriaController {
     usuariosBloc.add(const UsuarioLimpiarEvent());
     materiasBloc.add(const MateriasClearEvent());
   }
+
+  void cleanStatus() {
+    materiasBloc.add(const MateriasClearEvent());
+  }
 }

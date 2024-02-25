@@ -73,4 +73,8 @@ class TareaController {
     materiasBloc.add(const MateriasClearEvent());
     tareasBloc.add(const TareasClearEvent());
   }
+
+  void cleanStatus() {
+    tareasBloc.add(const TareasClearEvent());
+  }
 }

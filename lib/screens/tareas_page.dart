@@ -15,6 +15,7 @@ class TareasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TareaController controller = TareaController(context: context);
+    controller.cleanStatus();
     controller.getTareas();
 
     return BasePage(

@@ -21,9 +21,9 @@ class MateriasState extends Equatable {
   }
 
   MateriasState clearMateria() {
-    return MateriasState(
-      nombre: nombre,
-      ltsMaterias: const [],
+    return const MateriasState(
+      nombre: "",
+      ltsMaterias: [],
     );
   }
 

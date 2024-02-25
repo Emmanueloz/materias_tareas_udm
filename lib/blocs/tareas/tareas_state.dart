@@ -28,10 +28,10 @@ class TareasState extends Equatable {
   }
 
   TareasState clearTarea() {
-    return TareasState(
-      nombre: nombre,
-      materia: materia,
-      ltsTareas: const [],
+    return const TareasState(
+      nombre: "",
+      materia: "",
+      ltsTareas: [],
     );
   }
 
