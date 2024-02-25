@@ -1,10 +1,32 @@
 part of 'materias_bloc.dart';
 
-sealed class MateriasState extends Equatable {
-  const MateriasState();
-  
-  @override
-  List<Object> get props => [];
-}
+class MateriasState extends Equatable {
+  final String nombre;
+  final List<Materias> ltsMaterias;
+  const MateriasState({required this.nombre, required this.ltsMaterias});
 
-final class MateriasInitial extends MateriasState {}
+  MateriasState copyWith({String? nombre, Materias? materia}) {
+    return MateriasState(
+      nombre: nombre ?? this.nombre,
+      ltsMaterias: materia == null ? ltsMaterias : [...ltsMaterias, materia],
+    );
+  }
+
+  MateriasState removeMateria(Materias materia) {
+    ltsMaterias.remove(materia);
+    return MateriasState(
+      nombre: nombre,
+      ltsMaterias: ltsMaterias,
+    );
+  }
+
+  MateriasState clearMateria() {
+    return MateriasState(
+      nombre: nombre,
+      ltsMaterias: const [],
+    );
+  }
+
+  @override
+  List<Object> get props => [nombre, ltsMaterias];
+}

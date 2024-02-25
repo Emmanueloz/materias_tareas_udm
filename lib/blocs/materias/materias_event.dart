@@ -1,8 +1,27 @@
 part of 'materias_bloc.dart';
 
-sealed class MateriasEvent extends Equatable {
+abstract class MateriasEvent extends Equatable {
   const MateriasEvent();
 
   @override
   List<Object> get props => [];
+}
+
+class MateriasNombreEvent extends MateriasEvent {
+  final String nombre;
+  const MateriasNombreEvent(this.nombre);
+}
+
+class MateriasAddEvent extends MateriasEvent {
+  final Materias materia;
+  const MateriasAddEvent(this.materia);
+}
+
+class MateriasDeleteEvent extends MateriasEvent {
+  final Materias materia;
+  const MateriasDeleteEvent(this.materia);
+}
+
+class MateriasClearEvent extends MateriasEvent {
+  const MateriasClearEvent();
 }
