@@ -12,7 +12,7 @@ class RegistrarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RegistrarController controller = RegistrarController(context: context);
-
+    controller.cleanStatus();
     return BasePage(
       title: "Registrarse",
       isLogout: false,

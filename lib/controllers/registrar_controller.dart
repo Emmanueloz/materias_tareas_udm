@@ -106,6 +106,12 @@ class RegistrarController {
     }
   }
 
+  void cleanStatus() {
+    registrarBloc.add(
+      const RegistrarResetEvent(),
+    );
+  }
+
   void registrar() async {
     Usuario? usuario = Usuario(
       correo: registrarBloc.state.correo,

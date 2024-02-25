@@ -74,5 +74,11 @@ class RegistrarBloc extends Bloc<RegistrarEvent, RegistrarState> {
         state.copyWith(errorPassword: ""),
       ),
     );
+
+    on<RegistrarResetEvent>(
+      (event, emit) => emit(
+        state.reset(),
+      ),
+    );
   }
 }

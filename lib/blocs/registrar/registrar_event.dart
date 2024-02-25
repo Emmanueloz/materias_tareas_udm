@@ -60,3 +60,7 @@ class ValidarCorreoEvent extends RegistrarEvent {
 class ValidarPasswordEvent extends RegistrarEvent {
   const ValidarPasswordEvent();
 }
+
+class RegistrarResetEvent extends RegistrarEvent {
+  const RegistrarResetEvent();
+}

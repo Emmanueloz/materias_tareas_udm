@@ -38,6 +38,18 @@ class RegistrarState extends Equatable {
     );
   }
 
+  RegistrarState reset() {
+    return const RegistrarState(
+      errorCorreo: '',
+      errorUsuario: '',
+      errorPassword: '',
+      message: '',
+      nombre: '',
+      correo: '',
+      password: '',
+    );
+  }
+
   @override
   List<Object> get props => [
         errorCorreo,
