@@ -123,7 +123,6 @@ class DBProvider {
       where: 'id = ?',
       whereArgs: [materia.id],
     );
-    print(res);
     return res;
   }
 
@@ -165,6 +164,21 @@ class DBProvider {
       whereArgs: [tarea.id],
     );
 
+    return res;
+  }
+
+  Future<int?> updateTarea(Tareas tarea) async {
+    final db = await database;
+
+    final res = await db!.update(
+      'Tareas',
+      {
+        'titulo': tarea.titulo.toString(),
+        'materia': tarea.materia.toString(),
+      },
+      where: 'id = ?',
+      whereArgs: [tarea.id],
+    );
     return res;
   }
 }

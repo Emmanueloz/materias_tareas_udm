@@ -80,4 +80,19 @@ class TareaController {
   void cleanStatus() {
     tareasBloc.add(const TareasClearEvent());
   }
+
+  editarTarea(int id) {
+    Tareas tarea = Tareas(
+      id: id,
+      titulo: tareasBloc.state.nombre,
+      materia: tareasBloc.state.materia,
+      idUsuario: usuariosBloc.state.correo,
+    );
+    if (id != -1) {
+      DBProvider.db.updateTarea(tarea);
+    }
+    nombreController.text = "";
+    getTareas();
+    Navigator.pop(context);
+  }
 }
