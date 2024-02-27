@@ -34,8 +34,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: const ColorScheme.light(
-            primary: Color.fromRGBO(248, 183, 67, 1),
-            secondary: Color.fromRGBO(82, 99, 239, 1),
+            //rgb(0, 181, 150)
+            primary: Color.fromRGBO(1, 167, 138, 1),
+            secondary: Color.fromRGBO(0, 85, 112, 1),
           ),
           appBarTheme: const AppBarTheme(
             titleTextStyle:
